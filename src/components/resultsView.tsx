@@ -30,7 +30,7 @@ const ResultView = (props: ResultViewProps) => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{displayName(student.name)}</h2>
+              <h2 className="card-title text-center">{displayName(student.name)}</h2>
             </div>
           </div>
         ))}

@@ -18,6 +18,7 @@ const Search = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setResults([]);
+    setSelected(null);
     if (search) {
       const res = students.filter((student) =>
         student.name.toLowerCase().includes(search.toLowerCase())
@@ -43,7 +44,7 @@ const Search = () => {
         </form>
         <div className="mt-4">
           {selected ? (
-            <StudentView student={selected} />
+            <StudentView student={selected} back={setSelected} />
           ) : (
             <ResultsView results={results} setSelected={setSelected} />
           )}
