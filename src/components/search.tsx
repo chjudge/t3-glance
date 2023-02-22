@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Student } from "@/utils/types";
 import data from "@/utils/stud_directory.json";
+import ResultsView from "./resultsView";
 
 const Search = () => {
   const students = data as Student[];
@@ -24,13 +25,23 @@ const Search = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" value={search} onChange={handleChange} className="input input-bordered w-full max-w-xs" />
-      <button type="submit">Search</button>
-      {results.map((result) => (
-        <div key={result.name}>{result.name}</div>
-      ))}
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="">
+        <input
+          type="text"
+          value={search}
+          onChange={handleChange}
+          placeholder="Search by name"
+          className="input-bordered input w-full max-w-xs"
+        />
+        <button type="submit" className="btn">
+          Search
+        </button>
+      </form>
+      <div className="mt-4">
+        <ResultsView results={results} />
+      </div>
+    </>
   );
 };
 
