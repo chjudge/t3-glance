@@ -1,10 +1,10 @@
 import { displayName } from "@/utils/display";
-import type { Student } from "@/utils/types";
+import type { StudentDisplayData } from "@/utils/types";
 import Image from "next/image";
 
 interface ResultViewProps {
-  results: Student[];
-  setSelected: (student: Student) => void;
+  results: StudentDisplayData[];
+  setSelected: (student: StudentDisplayData) => void;
 }
 
 const ResultView = (props: ResultViewProps) => {
@@ -15,11 +15,10 @@ const ResultView = (props: ResultViewProps) => {
         {results.map((student) => (
           <div
             key={student.name}
-            className="card card-normal w-52 bg-base-100 shadow-xl m-4"
+            className="card card-normal m-4 w-52 bg-base-100 shadow-xl"
             onClick={() => {
               setSelected(student);
-            }
-            }
+            }}
           >
             <figure>
               <Image
@@ -30,7 +29,9 @@ const ResultView = (props: ResultViewProps) => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-center">{displayName(student.name)}</h2>
+              <h2 className="card-title text-center">
+                {displayName(student.name)}
+              </h2>
             </div>
           </div>
         ))}

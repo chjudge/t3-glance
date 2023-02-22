@@ -1,21 +1,25 @@
-import type { Student } from "@/utils/types";
+import type { StudentDisplayData } from "@/utils/types";
 
 interface StudentViewProps {
-    student: Student;
-    back: (student: Student | null) => void;
+  student: StudentDisplayData;
+  back: (student: StudentDisplayData | null) => void;
 }
 
 const StudentView = (props: StudentViewProps) => {
-    return (
-        <>
-            <div>
-                <button onClick={() => props.back(null)}>Back</button>
-                <h1>{props.student.name}</h1>
-                <h2>{props.student.email}</h2>
-                <h3>{props.student.class}</h3>
-            </div>
-        </>
-    );
-}
+  const student = props.student;
+  return (
+    <>
+      <div>
+        <button onClick={() => props.back(null)}>Back</button>
+        <p>Name: {student.name}</p>
+        <p>Email: {student.email}</p>
+        <p>Year: {student.year}</p>
+        <p>Room: {student.dorm}</p>
+        <p>Home Town: {student.city}, {student.state}</p>
+        <p>Roomates:</p>
+      </div>
+    </>
+  );
+};
 
-export default StudentView
+export default StudentView;
